@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Legal Information | HYPE FRAME LTD</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;800&display=swap" rel="stylesheet">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* Локальные стили для текстовой страницы */
+        .legal-section { padding-top: 150px; padding-bottom: 80px; }
+        .legal-content { max-width: 800px; margin: 0 auto; color: #ccc; text-align: left; }
+        .legal-content h1 { font-size: 2.5rem; color: var(--primary); margin-bottom: 40px; text-transform: uppercase; text-align: center; }
+        .legal-content h2 { font-size: 1.5rem; color: #fff; margin-top: 40px; margin-bottom: 20px; border-bottom: 1px solid #333; padding-bottom: 10px; }
+        .legal-content p { margin-bottom: 15px; font-size: 1rem; line-height: 1.6; }
+        .legal-content ul { margin-bottom: 20px; padding-left: 20px; }
+        .legal-content li { margin-bottom: 10px; }
+        /* Ссылка на email */
+        .legal-content a { color: var(--primary); text-decoration: none; transition: 0.3s; }
+        .legal-content a:hover { text-decoration: underline; }
+    </style>
+</head>
+<body>
+
+    <div class="background-blobs">
+        <div class="blob blob-1"></div>
+        <div class="blob blob-2"></div>
+        <div class="blob blob-3"></div>
+    </div>
+
+    <div id="mobile-overlay" class="mobile-overlay">
+        <button id="close-menu" class="close-btn" onclick="toggleMobileMenu()">&times;</button>
+        <nav class="mobile-nav">
+            <a href="index.html" data-i18n="menu_main">Home</a>
+            <a href="index.html#services" data-i18n="menu_services">Services</a>
+            <a href="contacts.html" data-i18n="menu_contacts">Contact & Payments</a>
+        </nav>
+        <div class="mobile-lang">
+            <span onclick="setLanguage('ru'); toggleMobileMenu()">RU</span>
+            <span class="lang-divider">|</span>
+            <span onclick="setLanguage('en'); toggleMobileMenu()">EN</span>
+        </div>
+    </div>
+
+    <header id="header" data-aos="fade-down">
+        <div class="header-glass">
+            <a href="index.html" class="logo">
+                <img src="images/logo.png" alt="HYPE FRAME">
+            </a>
+            
+            <nav class="main-menu">
+                <a href="index.html" data-i18n="menu_main">Home</a>
+                <a href="index.html#services" data-i18n="menu_services">Services</a>
+                <a href="contacts.html" data-i18n="menu_contacts">Contact & Payments</a>
+            </nav>
+
+            <div class="lang-switch desktop-only">
+                <span id="lang-ru" onclick="setLanguage('ru')">RU</span>
+                <span class="separator">/</span>
+                <span id="lang-en" class="active" onclick="setLanguage('en')">EN</span>
+            </div>
+        </div>
+
+        <button id="burger-btn" class="burger-glass" onclick="toggleMobileMenu()">
+            <div class="burger-line"></div>
+            <div class="burger-line"></div>
+        </button>
+    </header>
+
+    <section class="section legal-section">
+        <div class="container">
+            <div class="legal-content">
+                
+                <h1 data-i18n="legal_title">Legal Information</h1>
+
+                <h2 data-i18n="legal_company_title">Company Details</h2>
+                <p data-i18n="legal_company_text"><strong>HYPE FRAME LTD</strong> is a private limited company registered in England and Wales.</p>
+                <ul>
+                    <li data-i18n="legal_company_number"><strong>Company Number:</strong> 16555812</li>
+                    <li data-i18n="legal_company_address"><strong>Registered Office:</strong> 20 Wenlock Road, London, England, N1 7GU</li>
+                    <li data-i18n="legal_company_director"><strong>Director:</strong> Paul Derbush</li>
+                    <li><strong>Email:</strong> <a href="mailto:paul.derbush@icloud.com">paul.derbush@icloud.com</a></li>
+                </ul>
+
+                <h2 data-i18n="legal_payments_title">Payments & Refunds</h2>
+                <p data-i18n="legal_payments_bank">We bank with <strong>Revolut Business</strong>.</p>
+                
+                <p>
+                    <strong data-i18n="legal_payment_methods_title">Payment Methods:</strong><br>
+                    <span data-i18n="legal_payment_methods_text">We accept payments via Bank Transfer (Invoice), Credit/Debit Cards, and Payment Links.</span>
+                </p>
+                
+                <p>
+                    <strong data-i18n="legal_refund_title">Refund Policy:</strong><br>
+                    <span data-i18n="legal_refund_text">Refund conditions are specified in the contract concluded with each client.</span>
+                </p>
+
+                <h2 data-i18n="legal_privacy_title">Privacy Policy</h2>
+                <p data-i18n="legal_privacy_updated">Last updated: January 2026</p>
+                <p data-i18n="legal_privacy_intro"><strong>HYPE FRAME LTD</strong> is committed to protecting your privacy in compliance with GDPR.</p>
+                
+                <p>
+                    <strong data-i18n="legal_data_collect_title">Data We Collect:</strong><br>
+                    <span data-i18n="legal_data_collect_text">When you fill out a form on our website, we collect your name, phone number, and preferred contact method (WhatsApp/Telegram).</span>
+                </p>
+
+                <p>
+                    <strong data-i18n="legal_data_use_title">How We Use Data:</strong><br>
+                    <span data-i18n="legal_data_use_text">We use this data solely to contact you regarding your inquiry. We do not sell or share your data with third parties for marketing purposes.</span>
+                </p>
+
+                <h2 data-i18n="legal_cookie_title">Cookie Policy</h2>
+                <p data-i18n="legal_cookie_text">Our website uses third-party services (Kinescope.io) for video hosting which may set cookies to ensure proper playback. By using our website, you consent to the use of these cookies.</p>
+
+            </div>
+        </div>
+    </section>
+
+    <footer id="footer-glass">
+        <div class="container footer-content">
+            <div class="logo-footer">
+                <img src="images/logo.png" alt="Logo">
+            </div>
+            
+            <div class="footer-links" style="margin-bottom: 20px;">
+                <a href="legal.html" style="color: #666; text-decoration: none; font-size: 0.9rem; border-bottom: 1px solid #333; padding-bottom: 2px;" data-i18n="footer_legal_link">Privacy Policy & Legal Info</a>
+            </div>
+
+            <p class="copyright" style="color: #444; font-size: 0.8rem;">
+                © All rights reserved. HYPE FRAME LTD<br>
+                Registered in England & Wales No. 16555812<br>
+                20 Wenlock Road, London, N1 7GU<br>
+                2025-2026
+            </p>
+        </div>
+    </footer>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init({ duration: 1000, once: true });
+
+        function toggleMobileMenu() {
+            const overlay = document.getElementById('mobile-overlay');
+            overlay.classList.toggle('active');
+        }
+
+        const translations = {
+            ru: {
+                menu_main: "Главная",
+                menu_services: "Услуги",
+                menu_contacts: "Контакты и Оплата",
+                
+                // ЮРИДИЧЕСКАЯ ИНФОРМАЦИЯ
+                legal_title: "Юридическая Информация",
+                legal_company_title: "Реквизиты Компании",
+                legal_company_text: "<strong>HYPE FRAME LTD</strong> — это частная компания с ограниченной ответственностью, зарегистрированная в Англии и Уэльсе.",
+                legal_company_number: "<strong>Номер компании:</strong> 16555812",
+                legal_company_address: "<strong>Юридический адрес:</strong> 20 Wenlock Road, London, England, N1 7GU",
+                legal_company_director: "<strong>Директор:</strong> Paul Derbush",
+                
+                legal_payments_title: "Оплата и Возвраты",
+                legal_payments_bank: "Мы обслуживаемся в банке <strong>Revolut Business</strong>.",
+                legal_payment_methods_title: "Способы оплаты:",
+                legal_payment_methods_text: "Мы принимаем оплату банковским переводом (по инвойсу), кредитными/дебетовыми картами и по платежным ссылкам.",
+                legal_refund_title: "Политика возврата:",
+                legal_refund_text: "Условия возврата средств прописаны в договоре, заключаемом с каждым клиентом.",
+                
+                legal_privacy_title: "Политика Конфиденциальности",
+                legal_privacy_updated: "Последнее обновление: Январь 2026",
+                legal_privacy_intro: "<strong>HYPE FRAME LTD</strong> обязуется защищать вашу конфиденциальность в соответствии с GDPR.",
+                legal_data_collect_title: "Данные, которые мы собираем:",
+                legal_data_collect_text: "Когда вы заполняете форму на нашем сайте, мы собираем ваше имя, номер телефона и предпочтительный способ связи (WhatsApp/Telegram).",
+                legal_data_use_title: "Как мы используем данные:",
+                legal_data_use_text: "Мы используем эти данные исключительно для связи с вами по вашему запросу. Мы не продаем и не передаем ваши данные третьим лицам в маркетинговых целях.",
+                
+                legal_cookie_title: "Файлы Cookie",
+                legal_cookie_text: "Наш сайт использует сторонние сервисы (Kinescope.io) для видеохостинга, которые могут устанавливать файлы cookie для обеспечения правильного воспроизведения. Используя наш сайт, вы соглашаетесь с использованием этих файлов cookie.",
+                
+                footer_legal_link: "Политика Конфиденциальности и Реквизиты"
+            },
+            en: {
+                menu_main: "Home",
+                menu_services: "Services",
+                menu_contacts: "Contact & Payments",
+                
+                // LEGAL INFO
+                legal_title: "Legal Information",
+                legal_company_title: "Company Details",
+                legal_company_text: "<strong>HYPE FRAME LTD</strong> is a private limited company registered in England and Wales.",
+                legal_company_number: "<strong>Company Number:</strong> 16555812",
+                legal_company_address: "<strong>Registered Office:</strong> 20 Wenlock Road, London, England, N1 7GU",
+                legal_company_director: "<strong>Director:</strong> Paul Derbush",
+                
+                legal_payments_title: "Payments & Refunds",
+                legal_payments_bank: "We bank with <strong>Revolut Business</strong>.",
+                legal_payment_methods_title: "Payment Methods:",
+                legal_payment_methods_text: "We accept payments via Bank Transfer (Invoice), Credit/Debit Cards, and Payment Links.",
+                legal_refund_title: "Refund Policy:",
+                legal_refund_text: "Refund conditions are specified in the contract concluded with each client.",
+                
+                legal_privacy_title: "Privacy Policy",
+                legal_privacy_updated: "Last updated: January 2026",
+                legal_privacy_intro: "<strong>HYPE FRAME LTD</strong> is committed to protecting your privacy in compliance with GDPR.",
+                legal_data_collect_title: "Data We Collect:",
+                legal_data_collect_text: "When you fill out a form on our website, we collect your name, phone number, and preferred contact method (WhatsApp/Telegram).",
+                legal_data_use_title: "How We Use Data:",
+                legal_data_use_text: "We use this data solely to contact you regarding your inquiry. We do not sell or share your data with third parties for marketing purposes.",
+                
+                legal_cookie_title: "Cookie Policy",
+                legal_cookie_text: "Our website uses third-party services (Kinescope.io) for video hosting which may set cookies to ensure proper playback. By using our website, you consent to the use of these cookies.",
+
+                footer_legal_link: "Privacy Policy & Legal Info"
+            }
+        };
+
+        function setLanguage(lang) {
+            // 1. ЗАПОМИНАЕМ ВЫБОР
+            localStorage.setItem('language', lang);
+
+            // 2. МЕНЯЕМ АКТИВНУЮ КНОПКУ
+            if(document.getElementById('lang-ru')) {
+                document.getElementById('lang-ru').classList.remove('active');
+                document.getElementById('lang-en').classList.remove('active');
+                document.getElementById('lang-' + lang).classList.add('active');
+            }
+
+            // 3. МЕНЯЕМ ТЕКСТЫ
+            const elements = document.querySelectorAll('[data-i18n]');
+            elements.forEach(el => {
+                const key = el.getAttribute('data-i18n');
+                if (translations[lang] && translations[lang][key]) {
+                    el.innerHTML = translations[lang][key];
+                }
+            });
+
+            // 4. МЕНЯЕМ ПОДСКАЗКИ (PLACEHOLDERS)
+            const inputs = document.querySelectorAll('[data-placeholder]');
+            inputs.forEach(el => {
+                const key = el.getAttribute('data-placeholder');
+                if (translations[lang] && translations[lang][key]) {
+                    el.setAttribute('placeholder', translations[lang][key]);
+                }
+            });
+        }
+
+        // 5. ПРОВЕРЯЕМ ПАМЯТЬ ПРИ ЗАГРУЗКЕ
+        document.addEventListener('DOMContentLoaded', () => {
+            const savedLang = localStorage.getItem('language') || 'en';
+            setLanguage(savedLang);
+        });
+    </script>
+</body>
+</html>

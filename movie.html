@@ -1,0 +1,491 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Personal Movie | HYPE FRAME LTD</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;800&display=swap" rel="stylesheet">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="background-blobs">
+        <div class="blob blob-1"></div>
+        <div class="blob blob-2"></div>
+        <div class="blob blob-3"></div>
+    </div>
+
+    <div id="mobile-overlay" class="mobile-overlay">
+        <button id="close-menu" class="close-btn" onclick="toggleMobileMenu()">&times;</button>
+        <nav class="mobile-nav">
+            <a href="index.html" data-i18n="menu_main">Home</a>
+            <a href="index.html#services" data-i18n="menu_services">Services</a>
+            <a href="contacts.html" data-i18n="menu_contacts">Contact & Payments</a>
+        </nav>
+        <div class="mobile-lang">
+            <span onclick="setLanguage('ru'); toggleMobileMenu()">RU</span>
+            <span class="lang-divider">|</span>
+            <span onclick="setLanguage('en'); toggleMobileMenu()">EN</span>
+        </div>
+    </div>
+
+    <header id="header" data-aos="fade-down">
+        <div class="header-glass">
+            <a href="index.html" class="logo">
+                <img src="images/logo.png" alt="HYPE FRAME">
+            </a>
+            
+            <nav class="main-menu">
+                <a href="index.html" data-i18n="menu_main">Home</a>
+                <a href="index.html#services" data-i18n="menu_services">Services</a>
+                <a href="contacts.html" data-i18n="menu_contacts">Contact & Payments</a>
+            </nav>
+
+            <div class="lang-switch desktop-only">
+                <span id="lang-ru" onclick="setLanguage('ru')">RU</span>
+                <span class="separator">/</span>
+                <span id="lang-en" class="active" onclick="setLanguage('en')">EN</span>
+            </div>
+        </div>
+
+        <button id="burger-btn" class="burger-glass" onclick="toggleMobileMenu()">
+            <div class="burger-line"></div>
+            <div class="burger-line"></div>
+        </button>
+    </header>
+
+    <section class="section movie-hero-section">
+        <div class="container" data-aos="fade-up">
+            <h2 data-i18n="movie_title">PERSONAL MOVIE</h2>
+        </div>
+        <div class="full-width-image" data-aos="zoom-in" data-aos-delay="200">
+            <img src="images/movie_hero.jpg" alt="Cinematic filming process">
+            <div class="orange-overlay"></div>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="container">
+            <div class="manifesto-block" data-aos="fade-up">
+                <h3 class="orange-text" data-i18n="manifesto_subtitle">More Than Just a Video</h3>
+                <h2 data-i18n="manifesto_title">YOUR LEGACY IN 4K</h2>
+                <p class="lead-text" data-i18n="manifesto_text_1">
+                    Forget boring greeting videos where everyone awkwardly sits in front of a camera. We are creating a <b>real movie</b> with a plot, dynamic shots, professional sound design, and incredible energy.
+                </p>
+                <p class="lead-text" data-i18n="manifesto_text_2">
+                    This is the best way to capture your youth, drive, and friendship. Years later, this film will become your most valuable digital memory, proof that you lived life to the fullest.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <section class="section star-experience-section">
+        <div class="container">
+            <div class="experience-grid">
+                <div class="exp-text" data-aos="fade-right">
+                    <h2 data-i18n="exp_title">FEEL LIKE A HOLLYWOOD STAR</h2>
+                    <p data-i18n="exp_desc">
+                        The shooting process itself is an unforgettable adventure. You are the main actors on a professional set. Our clients say that this emotional experience is priceless. And when the movie is ready? Get ready to rewatch it 100 times and blow up your social media feed.
+                    </p>
+                </div>
+                <div class="about-image" data-aos="fade-left">
+                    <img src="images/movie_star_experience.jpg" alt="Feel like a star on set">
+                    <div class="orange-backdrop"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="container">
+            <div class="section-header" data-aos="fade-up">
+                <h2 data-i18n="themes_title">CHOOSE YOUR GENRE</h2>
+                <p data-i18n="themes_desc">Every person is unique. We adapt the script to show your best side. Here are examples of themes we've already brought to life.</p>
+            </div>
+
+            <div class="services-grid">
+                <div class="service-card" data-aos="fade-up" data-aos-delay="100">
+                    <div class="card-image-box">
+                        <img src="images/theme_vibe.jpg" alt="Vibe & Energy">
+                    </div>
+                    <div class="card-content">
+                        <h3 data-i18n="theme1_title">The Vibe & Energy</h3>
+                        <p data-i18n="theme1_desc">Fast cuts, inside jokes, dynamic music, shared madness. A film about how awesome it is to be friends with you right here and right now.</p>
+                    </div>
+                    <div class="orange-backdrop-card"></div>
+                </div>
+                <div class="service-card" data-aos="fade-up" data-aos-delay="200">
+                    <div class="card-image-box">
+                        <img src="images/theme_hustle.jpg" alt="The Hustle">
+                    </div>
+                    <div class="card-content">
+                        <h3 data-i18n="theme2_title">The Success Story</h3>
+                        <p data-i18n="theme2_desc">Your achievements, work rhythm, negotiations, and victories. A stylish, motivating film aimed at personal branding and respect.</p>
+                    </div>
+                    <div class="orange-backdrop-card"></div>
+                </div>
+                <div class="service-card" data-aos="fade-up" data-aos-delay="300">
+                    <div class="card-image-box">
+                        <img src="images/theme_dream.jpg" alt="The Dream Lifestyle">
+                    </div>
+                    <div class="card-content">
+                        <h3 data-i18n="theme3_title">Living The Dream</h3>
+                        <p data-i18n="theme3_desc">Hobbies, travel, cars, beautiful locations. A cinematic portrait of your lifestyle and the dreams you are making a reality.</p>
+                    </div>
+                    <div class="orange-backdrop-card"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section players-section">
+        <div class="container">
+            <div class="section-header" data-aos="fade-up">
+                <h2 data-i18n="portfolio_title">PORTFOLIO EXAMPLES</h2>
+                <p data-i18n="portfolio_subtitle">Real movies we created for our friends. Different goals, different vibes, same cinematic quality.</p>
+            </div>
+            
+            <div class="video-grid">
+                <div class="video-card-wrapper" data-aos="zoom-in">
+                    <div class="video-placeholder">
+                        <iframe src="https://kinescope.io/embed/7AKHWJeyJUmghw6QqcMFWD?ui_main_color=FF5500" allow="autoplay; fullscreen; picture-in-picture; encrypted-media; gyroscope; accelerometer; clipboard-write;" frameborder="0" allowfullscreen style="position: absolute; width: 100%; height: 100%; top: 0; left: 0;"></iframe>
+                    </div>
+                    <div class="video-desc">
+                        <h3 data-i18n="case1_title">Business & Influence</h3>
+                        <p data-i18n="case1_desc">A metaphorical film about the birthday boy's strong personality. Friends ironically showed how his business affects everyone around him and how they "dance to his tune".</p>
+                    </div>
+                </div>
+
+                <div class="video-card-wrapper" data-aos="zoom-in" data-aos-delay="100">
+                    <div class="video-placeholder">
+                        <iframe src="https://kinescope.io/embed/iLu5URDZH9VFW4L6cxwKHd?ui_main_color=FF5500" allow="autoplay; fullscreen; picture-in-picture; encrypted-media; gyroscope; accelerometer; clipboard-write;" frameborder="0" allowfullscreen style="position: absolute; width: 100%; height: 100%; top: 0; left: 0;"></iframe>
+                    </div>
+                    <div class="video-desc">
+                        <h3 data-i18n="case2_title">Aviation Hobby</h3>
+                        <p data-i18n="case2_desc">Built around his passion for flying. Friends launched a mock "Airline" and held a hilarious casting call for stewardesses. A perfect mix of personal hobby and humor.</p>
+                    </div>
+                </div>
+
+                <div class="video-card-wrapper" data-aos="zoom-in" data-aos-delay="200">
+                    <div class="video-placeholder">
+                        <iframe src="https://kinescope.io/embed/deYCJh957qdnQWcHtu3vE6?ui_main_color=FF5500" allow="autoplay; fullscreen; picture-in-picture; encrypted-media; gyroscope; accelerometer; clipboard-write;" frameborder="0" allowfullscreen style="position: absolute; width: 100%; height: 100%; top: 0; left: 0;"></iframe>
+                    </div>
+                    <div class="video-desc">
+                        <h3 data-i18n="case3_title">Sketch Show</h3>
+                        <p data-i18n="case3_desc">A series of comedy sketches reenacting real-life situations related to the birthday person. Inside jokes and funny moments turned into a cinematic experience.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section music-section">
+        <div class="container">
+            <div class="experience-grid music-grid">
+                <div class="exp-text" data-aos="fade-right">
+                    <h2 data-i18n="music_title">ORIGINAL SOUNDTRACK</h2>
+                    <p data-i18n="music_desc_1">
+                        A movie is visual, but emotions are driven by sound. Our exclusive artists <b>DERBUSH</b> and <b>AUTBOY</b> can produce a custom track for your event.
+                    </p>
+                    <p data-i18n="music_desc_2">
+                        It can be a standalone hit or seamlessly integrated into your movie. Your story deserves its own sound.
+                    </p>
+                </div>
+                <div class="music-player-box" data-aos="fade-left">
+                    <div class="video-placeholder">
+                        <iframe src="https://kinescope.io/embed/v9DLxYT2RRCkgffUShjYix?ui_main_color=FF5500" allow="autoplay; fullscreen; picture-in-picture; encrypted-media; gyroscope; accelerometer; clipboard-write;" frameborder="0" allowfullscreen style="position: absolute; width: 100%; height: 100%; top: 0; left: 0;"></iframe>
+                    </div>
+                    <div class="orange-backdrop"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section process-section">
+        <div class="container">
+            <div class="section-header" data-aos="fade-up">
+                <h2 data-i18n="process_title">HOW IT WORKS</h2>
+                <p data-i18n="process_subtitle">From idea to premiere in 6 simple steps.</p>
+            </div>
+
+            <div class="process-grid">
+                <div class="process-card" data-aos="fade-up" data-aos-delay="0">
+                    <div class="step-number">01</div>
+                    <h3 data-i18n="step1_title">Zoom Briefing</h3>
+                    <p data-i18n="step1_desc">We define the theme, participants, and deadlines. We schedule the shoot dates that work for everyone.</p>
+                </div>
+                <div class="process-card" data-aos="fade-up" data-aos-delay="100">
+                    <div class="step-number">02</div>
+                    <h3 data-i18n="step2_title">Locations</h3>
+                    <p data-i18n="step2_desc">We decide on studios or outdoor spots. We handle all booking and scouting.</p>
+                </div>
+                <div class="process-card" data-aos="fade-up" data-aos-delay="200">
+                    <div class="step-number">03</div>
+                    <h3 data-i18n="step3_title">Add-ons</h3>
+                    <p data-i18n="step3_desc">Do you need a custom song? Stylists or makeup artists? We organize the full squad.</p>
+                </div>
+                <div class="process-card" data-aos="fade-up" data-aos-delay="300">
+                    <div class="step-number">04</div>
+                    <h3 data-i18n="step4_title">Budget</h3>
+                    <p data-i18n="step4_desc">Transparent budgeting. We approve the project scope and costs.</p>
+                </div>
+                <div class="process-card" data-aos="fade-up" data-aos-delay="400">
+                    <div class="step-number">05</div>
+                    <h3 data-i18n="step5_title">Action!</h3>
+                    <p data-i18n="step5_desc">Production and editing days. The magic happens here.</p>
+                </div>
+                <div class="process-card" data-aos="fade-up" data-aos-delay="500">
+                    <div class="step-number">06</div>
+                    <h3 data-i18n="step6_title">Happiness</h3>
+                    <p data-i18n="step6_desc">Premiere day. Emotions for a lifetime. You enjoy the result forever.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contacts" class="section contact-section">
+        <div class="container">
+            <div class="form-wrapper" data-aos="flip-up">
+                <h2 data-i18n="cta_title">READY TO BE A STAR?</h2>
+                <p data-i18n="cta_desc">Let's discuss your script. Leave a request, and we will create a movie about you.</p>
+                
+                <form action="https://formspree.io/f/xpqqjgvp" method="POST" class="contact-form">
+                    <div class="input-group">
+                        <input type="text" name="name" data-placeholder="name_ph" placeholder="Your Name" required>
+                        <input type="hidden" name="source_page" value="Personal Movie Page">
+                    </div>
+                    <div class="radio-group-label" data-i18n="messenger_label">Preferred contact method?</div>
+                    <div class="radio-group">
+                        <input type="radio" id="contact-wa-movie" name="messenger_movie" value="WhatsApp" checked onchange="toggleContactMethodMovie()">
+                        <label for="contact-wa-movie">WhatsApp</label>
+                        <input type="radio" id="contact-tg-movie" name="messenger_movie" value="Telegram" onchange="toggleContactMethodMovie()">
+                        <label for="contact-tg-movie">Telegram</label>
+                    </div>
+                    <div class="input-group" id="input-phone-group-movie">
+                        <input type="tel" name="phone" id="input-phone-movie" data-placeholder="phone_ph" placeholder="Your Phone Number" required>
+                    </div>
+                    <div class="input-group" id="input-tg-group-movie" style="display: none;">
+                        <input type="text" name="telegram_username" id="input-tg-movie" placeholder="@username (Telegram)">
+                    </div>
+                    <button type="submit" class="btn btn-primary" data-i18n="btn_book_consult">Book a Consultation</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <footer id="footer-glass">
+        <div class="container footer-content">
+            <div class="logo-footer">
+                <img src="images/logo.png" alt="Logo">
+            </div>
+            
+            <div class="footer-links">
+                <a href="legal.html" class="footer-legal-link" data-i18n="footer_legal_link">Privacy Policy & Legal Info</a>
+            </div>
+
+            <p class="copyright">
+                © All rights reserved. HYPE FRAME LTD<br>
+                Registered in England & Wales No. 16555812<br>
+                20 Wenlock Road, London, N1 7GU<br>
+                2025-2026
+            </p>
+        </div>
+    </footer>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init({ duration: 1000, once: true });
+
+        function toggleContactMethodMovie() {
+            const isWa = document.getElementById('contact-wa-movie').checked;
+            const phoneGroup = document.getElementById('input-phone-group-movie');
+            const tgGroup = document.getElementById('input-tg-group-movie');
+            const phoneInput = document.getElementById('input-phone-movie');
+            const tgInput = document.getElementById('input-tg-movie');
+
+            if (isWa) {
+                phoneGroup.style.display = 'block';
+                tgGroup.style.display = 'none';
+                phoneInput.setAttribute('required', 'required');
+                tgInput.removeAttribute('required');
+                tgInput.value = '';
+            } else {
+                phoneGroup.style.display = 'none';
+                tgGroup.style.display = 'block';
+                tgInput.setAttribute('required', 'required');
+                phoneInput.removeAttribute('required');
+                phoneInput.value = '';
+            }
+        }
+
+        function toggleMobileMenu() {
+            const overlay = document.getElementById('mobile-overlay');
+            overlay.classList.toggle('active');
+        }
+
+        const translations = {
+            ru: {
+                menu_main: "Главная",
+                menu_services: "Услуги",
+                menu_contacts: "Контакты и Оплата",
+                
+                movie_title: "ФИЛЬМ ДЛЯ ВАС",
+                manifesto_subtitle: "Больше, чем просто видео",
+                manifesto_title: "ВАШЕ НАСЛЕДИЕ В 4K",
+                manifesto_text_1: "Забудьте о скучных поздравительных видео, где все неловко сидят перед камерой. Мы создаем <b>настоящее кино</b> с сюжетом, динамичными кадрами, профессиональным саунд-дизайном и невероятной энергией.",
+                manifesto_text_2: "Это лучший способ запечатлеть вашу молодость, драйв и дружбу. Спустя годы этот фильм станет вашим самым ценным цифровым воспоминанием, доказательством того, что вы жили на полную катушку.",
+                
+                exp_title: "ПОЧУВСТВУЙТЕ СЕБЯ ЗВЕЗДОЙ",
+                exp_desc: "Сам процесс съёмки — это незабываемое приключение. Вы — главные актеры на профессиональной площадке. Наши клиенты говорят, что этот эмоциональный опыт бесценен. А когда фильм готов? Готовьтесь пересматривать его 100 раз и взорвать соцсети.",
+                
+                themes_title: "ВЫБЕРИТЕ СВОЙ ЖАНР",
+                themes_desc: "Каждый человек уникален. Мы адаптируем сценарий, чтобы показать ваши лучшие стороны. Вот примеры тем, которые мы уже воплотили в жизнь.",
+                theme1_title: "Вайб и Энергия",
+                theme1_desc: "Быстрый монтаж, локальные шутки, динамичная музыка, общее безумие. Фильм о том, как круто дружить с вами здесь и сейчас.",
+                theme2_title: "История Успеха",
+                theme2_desc: "Ваши достижения, рабочий ритм, переговоры и победы. Стильный, мотивирующий фильм, работающий на личный бренд и респект.",
+                theme3_title: "Жизнь Мечты",
+                theme3_desc: "Хобби, путешествия, тачки, красивые локации. Кинематографичный портрет вашего лайфстайла и мечт, которые вы воплощаете.",
+                
+                portfolio_title: "ПРИМЕРЫ РАБОТ",
+                portfolio_subtitle: "Реальные фильмы, которые мы сняли для друзей. Разные задачи, разный вайб, но всегда киношное качество.",
+                
+                case1_title: "Влияние Личности",
+                case1_desc: "Фильм-метафора о сильном характере именинника. Друзья в шутливой форме показали, как его бизнес влияет на их жизни и как все вокруг «пляшут под его дудку».",
+                case2_title: "Авиация и Хобби",
+                case2_desc: "Фильм про главное увлечение героя. Друзья «открыли» шуточную авиакомпанию и устроили уморительный кастинг стюардесс. Идеальный микс личного хобби и юмора.",
+                case3_title: "Комедийные Скетчи",
+                case3_desc: "Серия игровых скетчей, где друзья обыгрывают реальные жизненные ситуации, связанные с именинником. Максимум локальных шуток и киношная подача.",
+
+                music_title: "САУНДТРЕК",
+                music_desc_1: "Фильм — это картинка, но эмоции создает звук. Наши артисты <b>DERBUSH</b> и <b>AUTBOY</b> напишут персональный трек для вашего события.",
+                music_desc_2: "Это может быть отдельный хит или часть фильма. Ваша история заслуживает своего звучания.",
+
+                process_title: "ЭТАПЫ РАБОТЫ",
+                process_subtitle: "От идеи до премьеры за 6 простых шагов.",
+                step1_title: "Звонок и Бриф",
+                step1_desc: "Определяем тему, участников и сроки. Согласуем даты съемок, удобные для всех.",
+                step2_title: "Локации",
+                step2_desc: "Решаем, нужны ли студии или уличные локации. Берем на себя бронирование и поиск.",
+                step3_title: "Доп. услуги",
+                step3_desc: "Нужна песня? Стилисты или визажисты? Мы организуем полную команду.",
+                step4_title: "Бюджет",
+                step4_desc: "Прозрачная смета. Согласовываем объем работ и стоимость проекта.",
+                step5_title: "Мотор!",
+                step5_desc: "Дни съемок и монтажа. Самый интересный этап, где происходит магия.",
+                step6_title: "Счастье",
+                step6_desc: "День премьеры. Эмоции на всю жизнь. Вы наслаждаетесь результатом вечно.",
+
+                cta_title: "ГОТОВЫ СТАТЬ ЗВЕЗДОЙ?",
+                cta_desc: "Давайте обсудим ваш сценарий. Оставьте заявку, и мы снимем кино про вас.",
+                btn_book_consult: "Забронировать консультацию",
+                
+                name_ph: "Ваше имя",
+                phone_ph: "Ваш номер телефона",
+                messenger_label: "Где удобнее ответить?",
+                
+                footer_legal_link: "Политика Конфиденциальности и Реквизиты"
+            },
+            en: {
+                menu_main: "Home",
+                menu_services: "Services",
+                menu_contacts: "Contact & Payments",
+                
+                movie_title: "PERSONAL MOVIE",
+                manifesto_subtitle: "More Than Just a Video",
+                manifesto_title: "YOUR LEGACY IN 4K",
+                manifesto_text_1: "Forget boring greeting videos where everyone awkwardly sits in front of a camera. We are creating a <b>real movie</b> with a plot, dynamic shots, professional sound design, and incredible energy.",
+                manifesto_text_2: "This is the best way to capture your youth, drive, and friendship. Years later, this film will become your most valuable digital memory, proof that you lived life to the fullest.",
+                
+                exp_title: "FEEL LIKE A HOLLYWOOD STAR",
+                exp_desc: "The shooting process itself is an unforgettable adventure. You are the main actors on a professional set. Our clients say that this emotional experience is priceless. And when the movie is ready? Get ready to rewatch it 100 times and blow up your social media feed.",
+                
+                themes_title: "CHOOSE YOUR GENRE",
+                themes_desc: "Every person is unique. We adapt the script to show your best side. Here are examples of themes we've already brought to life.",
+                theme1_title: "The Vibe & Energy",
+                theme1_desc: "Fast cuts, inside jokes, dynamic music, shared madness. A film about how awesome it is to be friends with you right here and right now.",
+                theme2_title: "The Success Story",
+                theme2_desc: "Your achievements, work rhythm, negotiations, and victories. A stylish, motivating film aimed at personal branding and respect.",
+                theme3_title: "Living The Dream",
+                theme3_desc: "Hobbies, travel, cars, beautiful locations. A cinematic portrait of your lifestyle and the dreams you are making a reality.",
+                
+                portfolio_title: "PORTFOLIO EXAMPLES",
+                portfolio_subtitle: "Real movies we created for our friends. Different goals, different vibes, same cinematic quality.",
+                
+                case1_title: "Business & Influence",
+                case1_desc: "A metaphorical film about the birthday boy's strong personality. Friends ironically showed how his business affects everyone around him and how they 'dance to his tune'.",
+                case2_title: "Aviation Hobby",
+                case2_desc: "Built around his passion for flying. Friends launched a mock 'Airline' and held a hilarious casting call for stewardesses. A perfect mix of personal hobby and humor.",
+                case3_title: "Sketch Show",
+                case3_desc: "A series of comedy sketches reenacting real-life situations related to the birthday person. Inside jokes and funny moments turned into a cinematic experience.",
+
+                music_title: "ORIGINAL SOUNDTRACK",
+                music_desc_1: "A movie is visual, but emotions are driven by sound. Our exclusive artists <b>DERBUSH</b> and <b>AUTBOY</b> can produce a custom track for your event.",
+                music_desc_2: "It can be a standalone hit or seamlessly integrated into your movie. Your story deserves its own sound.",
+
+                process_title: "HOW IT WORKS",
+                process_subtitle: "From idea to premiere in 6 simple steps.",
+                step1_title: "Zoom Briefing",
+                step1_desc: "We define the theme, participants, and deadlines. We schedule the shoot dates that work for everyone.",
+                step2_title: "Locations",
+                step2_desc: "We decide on studios or outdoor spots. We handle all booking and scouting.",
+                step3_title: "Add-ons",
+                step3_desc: "Do you need a custom song? Stylists or makeup artists? We organize the full squad.",
+                step4_title: "Budget",
+                step4_desc: "Transparent budgeting. We approve the project scope and costs.",
+                step5_title: "Action!",
+                step5_desc: "Production and editing days. The magic happens here.",
+                step6_title: "Happiness",
+                step6_desc: "Premiere day. Emotions for a lifetime. You enjoy the result forever.",
+
+                cta_title: "READY TO BE A STAR?",
+                cta_desc: "Let's discuss your script. Leave a request, and we will create a movie about you.",
+                btn_book_consult: "Book a Consultation",
+                
+                name_ph: "Your Name",
+                phone_ph: "Your Phone Number",
+                messenger_label: "Preferred contact method?",
+
+                footer_legal_link: "Privacy Policy & Legal Info"
+            }
+        };
+
+        function setLanguage(lang) {
+            // 1. ЗАПОМИНАЕМ ВЫБОР
+            localStorage.setItem('language', lang);
+
+            // 2. МЕНЯЕМ АКТИВНУЮ КНОПКУ
+            if(document.getElementById('lang-ru')) {
+                document.getElementById('lang-ru').classList.remove('active');
+                document.getElementById('lang-en').classList.remove('active');
+                document.getElementById('lang-' + lang).classList.add('active');
+            }
+
+            // 3. МЕНЯЕМ ТЕКСТЫ
+            const elements = document.querySelectorAll('[data-i18n]');
+            elements.forEach(el => {
+                const key = el.getAttribute('data-i18n');
+                if (translations[lang] && translations[lang][key]) {
+                    el.innerHTML = translations[lang][key];
+                }
+            });
+
+            // 4. МЕНЯЕМ ПОДСКАЗКИ (PLACEHOLDERS)
+            const inputs = document.querySelectorAll('[data-placeholder]');
+            inputs.forEach(el => {
+                const key = el.getAttribute('data-placeholder');
+                if (translations[lang] && translations[lang][key]) {
+                    el.setAttribute('placeholder', translations[lang][key]);
+                }
+            });
+        }
+
+        // 5. ПРОВЕРЯЕМ ПАМЯТЬ ПРИ ЗАГРУЗКЕ
+        document.addEventListener('DOMContentLoaded', () => {
+            const savedLang = localStorage.getItem('language') || 'en';
+            setLanguage(savedLang);
+        });
+    </script>
+</body>
+</html>

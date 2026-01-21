@@ -1,0 +1,509 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Content Production | HYPE FRAME LTD</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;800&display=swap" rel="stylesheet">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    
+    <style>
+        /* --- СТИЛИ ДЛЯ ГАЛЕРЕИ --- */
+        .gallery-container-relative { position: relative; }
+
+        .gallery-strip {
+            display: flex;
+            overflow-x: auto;
+            gap: 20px;
+            padding: 20px 5px;
+            scrollbar-width: none;
+            -ms-overflow-style: none;
+            scroll-behavior: smooth;
+        }
+        .gallery-strip::-webkit-scrollbar { display: none; }
+        
+        .gallery-item {
+            flex: 0 0 auto;
+            width: 300px;
+            height: 450px;
+            border-radius: 15px;
+            overflow: hidden;
+            position: relative;
+            transition: 0.3s;
+            cursor: pointer;
+            border: 1px solid #333;
+        }
+        .gallery-item img {
+            width: 100%; height: 100%; object-fit: cover; transition: 0.5s;
+        }
+        .gallery-item:hover { transform: scale(1.02); border-color: var(--primary); box-shadow: 0 10px 20px rgba(0,0,0,0.3); }
+        .gallery-item:hover img { transform: scale(1.1); }
+
+        .gallery-nav-arrow {
+            position: absolute; top: 50%; transform: translateY(-50%);
+            background: rgba(0, 0, 0, 0.6); color: #fff;
+            width: 50px; height: 50px; border-radius: 50%;
+            display: flex; justify-content: center; align-items: center;
+            font-size: 1.5rem; cursor: pointer; z-index: 10;
+            backdrop-filter: blur(5px); border: 1px solid rgba(255,255,255,0.1);
+            transition: 0.3s; user-select: none;
+        }
+        .gallery-nav-arrow:hover { background: var(--primary); border-color: var(--primary); }
+        .nav-prev { left: -25px; }
+        .nav-next { right: -25px; }
+
+        /* --- ЛАЙТБОКС --- */
+        .lightbox {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0, 0, 0, 0.95); z-index: 9999;
+            display: none; justify-content: center; align-items: center;
+            opacity: 0; transition: opacity 0.3s;
+        }
+        .lightbox.active { display: flex; opacity: 1; }
+        
+        .lightbox-img {
+            max-width: 90%; max-height: 90%;
+            border-radius: 10px; box-shadow: 0 0 30px rgba(255, 85, 0, 0.2);
+        }
+        
+        .lightbox-close {
+            position: absolute; top: 30px; right: 30px;
+            color: #fff; font-size: 3rem; cursor: pointer; transition: 0.3s; z-index: 20;
+        }
+        .lightbox-close:hover { color: var(--primary); }
+        
+        .lightbox-arrow {
+            position: absolute; top: 50%; transform: translateY(-50%);
+            color: #fff; font-size: 4rem; cursor: pointer; padding: 20px;
+            transition: 0.3s; user-select: none; z-index: 20;
+        }
+        .lightbox-arrow:hover { color: var(--primary); scale: 1.1; }
+        .lb-prev { left: 30px; }
+        .lb-next { right: 30px; }
+
+        /* --- ВИДЕО СЕТКА --- */
+        .video-grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px; margin-top: 40px; }
+        .video-wrapper-sm {
+            position: relative; padding-bottom: 56.25%; height: 0;
+            border-radius: 15px; overflow: hidden; border: 1px solid #333; transition: 0.3s;
+        }
+        .video-wrapper-sm:hover { border-color: var(--primary); box-shadow: 0 0 20px rgba(255, 85, 0, 0.2); }
+        .video-wrapper-sm iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }
+
+        @media (max-width: 768px) {
+            .video-grid-3 { grid-template-columns: 1fr; }
+            .gallery-item { width: 240px; height: 360px; }
+            .lightbox-arrow { font-size: 3rem; padding: 10px; }
+            .lb-prev { left: 10px; } .lb-next { right: 10px; }
+            .nav-prev { left: 0; } .nav-next { right: 0; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="background-blobs">
+        <div class="blob blob-1"></div>
+        <div class="blob blob-2"></div>
+        <div class="blob blob-3"></div>
+    </div>
+
+    <div id="mobile-overlay" class="mobile-overlay">
+        <button id="close-menu" class="close-btn" onclick="toggleMobileMenu()">&times;</button>
+        <nav class="mobile-nav">
+            <a href="index.html" data-i18n="menu_main">Home</a>
+            <a href="index.html#services" data-i18n="menu_services">Services</a>
+            <a href="contacts.html" data-i18n="menu_contacts">Contact & Payments</a>
+        </nav>
+        <div class="mobile-lang">
+            <span onclick="setLanguage('ru'); toggleMobileMenu()">RU</span>
+            <span class="lang-divider">|</span>
+            <span onclick="setLanguage('en'); toggleMobileMenu()">EN</span>
+        </div>
+    </div>
+
+    <header id="header" data-aos="fade-down">
+        <div class="header-glass">
+            <a href="index.html" class="logo">
+                <img src="images/logo.png" alt="HYPE FRAME">
+            </a>
+            
+            <nav class="main-menu">
+                <a href="index.html" data-i18n="menu_main">Home</a>
+                <a href="index.html#services" data-i18n="menu_services">Services</a>
+                <a href="contacts.html" data-i18n="menu_contacts">Contact & Payments</a>
+            </nav>
+
+            <div class="lang-switch desktop-only">
+                <span id="lang-ru" onclick="setLanguage('ru')">RU</span>
+                <span class="separator">/</span>
+                <span id="lang-en" class="active" onclick="setLanguage('en')">EN</span>
+            </div>
+        </div>
+
+        <button id="burger-btn" class="burger-glass" onclick="toggleMobileMenu()">
+            <div class="burger-line"></div>
+            <div class="burger-line"></div>
+        </button>
+    </header>
+
+    <section class="section movie-hero-section" style="padding-bottom: 0;">
+        <div class="container" style="text-align: center; max-width: 900px;" data-aos="fade-up">
+            <h2 data-i18n="prod_title" style="margin-bottom: 20px;">CONTENT PRODUCTION</h2>
+        </div>
+        
+        <div class="full-width-image" data-aos="zoom-in" data-aos-delay="200" style="margin-top: 30px; margin-bottom: 50px;">
+            <img src="images/production_hero.jpg" alt="Content Creation">
+            <div class="orange-overlay"></div>
+        </div>
+
+        <div class="container" style="text-align: center; max-width: 900px;" data-aos="fade-up" data-aos-delay="400">
+            <p class="lead-text" data-i18n="prod_desc">
+                Content has become the currency of the 21st century. Posts, Reels, Stories, YouTube, TikTok — these are not just entertainment, but powerful tools for influence. To stand out in this noise, you need quality. We create visuals that grab attention from the first second.
+            </p>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="container">
+            <div class="section-header" data-aos="fade-up">
+                <h2 data-i18n="gallery_title">PHOTO PORTFOLIO</h2>
+            </div>
+            
+            <div class="gallery-container-relative" data-aos="fade-up" data-aos-delay="200">
+                <div class="gallery-nav-arrow nav-prev" onclick="scrollGallery(-320)">&#10094;</div>
+                <div class="gallery-strip" id="gallery-strip">
+                    </div>
+                <div class="gallery-nav-arrow nav-next" onclick="scrollGallery(320)">&#10095;</div>
+            </div>
+        </div>
+    </section>
+
+    <div id="lightbox" class="lightbox" onclick="closeLightbox(event)">
+        <span class="lightbox-close" onclick="closeLightbox(event)">&times;</span>
+        <span class="lightbox-arrow lb-prev" onclick="changeSlide(-1, event)">&#10094;</span>
+        <img id="lightbox-img" class="lightbox-img" src="" alt="Full Screen">
+        <span class="lightbox-arrow lb-next" onclick="changeSlide(1, event)">&#10095;</span>
+    </div>
+
+    <section class="section">
+        <div class="container">
+            <div class="section-header" data-aos="fade-up">
+                <h2 data-i18n="video_title">OUR VIDEO WORKS</h2>
+            </div>
+
+            <div class="video-grid-3">
+                <div class="video-wrapper-sm" data-aos="zoom-in">
+                    <iframe src="https://kinescope.io/embed/v9DLxYT2RRCkgffUShjYix" allow="autoplay; fullscreen" frameborder="0"></iframe>
+                </div>
+                <div class="video-wrapper-sm" data-aos="zoom-in" data-aos-delay="100">
+                    <iframe src="https://kinescope.io/embed/v9DLxYT2RRCkgffUShjYix" allow="autoplay; fullscreen" frameborder="0"></iframe>
+                </div>
+                <div class="video-wrapper-sm" data-aos="zoom-in" data-aos-delay="200">
+                    <iframe src="https://kinescope.io/embed/v9DLxYT2RRCkgffUShjYix" allow="autoplay; fullscreen" frameborder="0"></iframe>
+                </div>
+                <div class="video-wrapper-sm" data-aos="zoom-in">
+                    <iframe src="https://kinescope.io/embed/v9DLxYT2RRCkgffUShjYix" allow="autoplay; fullscreen" frameborder="0"></iframe>
+                </div>
+                <div class="video-wrapper-sm" data-aos="zoom-in" data-aos-delay="100">
+                    <iframe src="https://kinescope.io/embed/v9DLxYT2RRCkgffUShjYix" allow="autoplay; fullscreen" frameborder="0"></iframe>
+                </div>
+                <div class="video-wrapper-sm" data-aos="zoom-in" data-aos-delay="200">
+                    <iframe src="https://kinescope.io/embed/v9DLxYT2RRCkgffUShjYix" allow="autoplay; fullscreen" frameborder="0"></iframe>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="container">
+            <div class="form-wrapper" style="text-align: left; padding: 40px;" data-aos="fade-up">
+                <h3 class="orange-text" style="font-size: 1.5rem; margin-bottom: 20px;" data-i18n="info_title">Important Information</h3>
+                <p data-i18n="info_text" style="margin-bottom: 0;">
+                    Shooting and editing vary greatly in complexity. A full-day wedding shoot requires completely different physical and technical resources than an hour of Reels filming. Editing a dynamic clip takes different time than a podcast. That's why we don't have fixed "price tags". We calculate the cost individually after a consultation, once we understand your goals and the scale of the project.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <section id="request-form" class="section contact-section">
+        <div class="container">
+            <div class="form-wrapper" data-aos="flip-up">
+                <h2 data-i18n="form_title">CALCULATE COST</h2>
+                <p data-i18n="form_subtitle">Fill out the form, select a category, and we will contact you.</p>
+                
+                <form action="https://formspree.io/f/xpqqjgvp" method="POST" class="contact-form">
+                    
+                    <div class="input-group">
+                        <input type="text" name="name" data-placeholder="name_ph" placeholder="Your Name" required>
+                        <input type="hidden" name="source_page" value="Production Page">
+                    </div>
+
+                    <div class="radio-group-label" data-i18n="messenger_label">Preferred contact method?</div>
+                    <div class="radio-group">
+                        <input type="radio" id="contact-wa-prod" name="messenger_prod" value="WhatsApp" checked onchange="toggleContactMethodProd()">
+                        <label for="contact-wa-prod">WhatsApp</label>
+                        <input type="radio" id="contact-tg-prod" name="messenger_prod" value="Telegram" onchange="toggleContactMethodProd()">
+                        <label for="contact-tg-prod">Telegram</label>
+                    </div>
+
+                    <div class="input-group" id="input-phone-group-prod">
+                        <input type="tel" name="phone" id="input-phone-prod" data-placeholder="phone_ph" placeholder="Your Phone Number" required>
+                    </div>
+                    
+                    <div class="input-group" id="input-tg-group-prod" style="display: none;">
+                        <input type="text" name="telegram_username" id="input-tg-prod" placeholder="@username (Telegram)">
+                    </div>
+
+                    <div class="input-group">
+                        <div class="select-wrapper">
+                            <select id="main-service" name="service_category" required onchange="updateSubServices()">
+                                <option value="" disabled selected data-i18n="select_cat">Select Category...</option>
+                                <option value="Photo" data-i18n="cat_photo">Photography</option>
+                                <option value="Video" data-i18n="cat_video">Videography</option>
+                                <option value="Editing" data-i18n="cat_edit">Video Editing</option>
+                            </select>
+                            <span class="select-arrow">▼</span>
+                        </div>
+                    </div>
+
+                    <div class="input-group">
+                        <div class="select-wrapper">
+                            <select id="sub-service" name="service_type" required>
+                                <option value="" disabled selected data-i18n="select_type">Select Type...</option>
+                            </select>
+                            <span class="select-arrow">▼</span>
+                        </div>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary" data-i18n="btn_submit_quote">Get a Quote</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <footer id="footer-glass">
+        <div class="container footer-content">
+            <div class="logo-footer">
+                <img src="images/logo.png" alt="Logo">
+            </div>
+            
+            <div class="footer-links">
+                <a href="legal.html" class="footer-legal-link" data-i18n="footer_legal_link">Privacy Policy & Legal Info</a>
+            </div>
+
+            <p class="copyright">
+                © All rights reserved. HYPE FRAME LTD<br>
+                Registered in England & Wales No. 16555812<br>
+                20 Wenlock Road, London, N1 7GU<br>
+                2025-2026
+            </p>
+        </div>
+    </footer>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init({ duration: 1000, once: true });
+
+        // --- ГАЛЕРЕЯ (20 фото) ---
+        const galleryStrip = document.getElementById('gallery-strip');
+        for (let i = 1; i <= 20; i++) {
+            const div = document.createElement('div');
+            div.className = 'gallery-item';
+            div.setAttribute('onclick', `openLightbox(${i})`);
+            div.innerHTML = `<img src="images/gallery_${i}.jpg" alt="Photo ${i}" loading="lazy">`;
+            galleryStrip.appendChild(div);
+        }
+
+        function scrollGallery(offset) {
+            galleryStrip.scrollBy({ left: offset, behavior: 'smooth' });
+        }
+
+        // --- ЛАЙТБОКС ---
+        let currentImageIndex = 1;
+        const totalImages = 20;
+        const lightbox = document.getElementById('lightbox');
+        const lightboxImg = document.getElementById('lightbox-img');
+
+        function openLightbox(index) {
+            currentImageIndex = index;
+            lightboxImg.src = `images/gallery_${index}.jpg`;
+            lightbox.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeLightbox(event) {
+            if (event.target.id === 'lightbox' || event.target.classList.contains('lightbox-close')) {
+                lightbox.classList.remove('active');
+                document.body.style.overflow = 'auto';
+            }
+        }
+
+        function changeSlide(step, event) {
+            event.stopPropagation();
+            currentImageIndex += step;
+            if (currentImageIndex > totalImages) currentImageIndex = 1;
+            if (currentImageIndex < 1) currentImageIndex = totalImages;
+            lightboxImg.style.opacity = 0;
+            setTimeout(() => {
+                lightboxImg.src = `images/gallery_${currentImageIndex}.jpg`;
+                lightboxImg.style.opacity = 1;
+            }, 200);
+        }
+
+        // --- ФОРМА ---
+        const subServices = {
+            ru: {
+                Photo: ["Студийная съемка", "Уличная съемка", "Портретная съемка", "Репортаж мероприятия", "Бренд-съемка для соцсетей", "Love Story"],
+                Video: ["Reels / Shorts / TikTok", "Интервью / Подкаст", "Влог / YouTube выпуск", "Рекламный/Имиджевый ролик", "Съемка мероприятия/Свадьбы", "Музыкальный клип"],
+                Editing: ["Монтаж Reels / TikTok", "Монтаж YouTube выпуска", "Цветокоррекция", "Саунд-дизайн", "Сложная графика / VFX"]
+            },
+            en: {
+                Photo: ["Studio Shoot", "Street Style", "Portrait Photography", "Event Reportage", "Brand Shoot for Social Media", "Love Story"],
+                Video: ["Reels / Shorts / TikTok", "Interview / Podcast", "Vlog / YouTube Episode", "Commercial/Brand Film", "Event/Wedding Videography", "Music Video"],
+                Editing: ["Reels / TikTok Editing", "YouTube Episode Editing", "Color Grading", "Sound Design", "VFX & Motion Graphics"]
+            }
+        };
+
+        function updateSubServices() {
+            const mainSelect = document.getElementById('main-service');
+            const subSelect = document.getElementById('sub-service');
+            const category = mainSelect.value;
+            const currentLang = localStorage.getItem('language') || 'en';
+            
+            subSelect.innerHTML = '';
+            
+            if (subServices[currentLang][category]) {
+                subServices[currentLang][category].forEach(item => {
+                    const option = document.createElement('option');
+                    option.value = item;
+                    option.text = item;
+                    subSelect.appendChild(option);
+                });
+            }
+        }
+
+        function toggleContactMethodProd() {
+            const isWa = document.getElementById('contact-wa-prod').checked;
+            const phoneGroup = document.getElementById('input-phone-group-prod');
+            const tgGroup = document.getElementById('input-tg-group-prod');
+            const phoneInput = document.getElementById('input-phone-prod');
+            const tgInput = document.getElementById('input-tg-prod');
+
+            if (isWa) {
+                phoneGroup.style.display = 'block';
+                tgGroup.style.display = 'none';
+                phoneInput.setAttribute('required', 'required');
+                tgInput.removeAttribute('required');
+                tgInput.value = '';
+            } else {
+                phoneGroup.style.display = 'none';
+                tgGroup.style.display = 'block';
+                tgInput.setAttribute('required', 'required');
+                phoneInput.removeAttribute('required');
+                phoneInput.value = '';
+            }
+        }
+
+        function toggleMobileMenu() {
+            const overlay = document.getElementById('mobile-overlay');
+            overlay.classList.toggle('active');
+        }
+
+        const translations = {
+            ru: {
+                menu_main: "Главная",
+                menu_services: "Услуги",
+                menu_contacts: "Контакты и Оплата",
+                
+                prod_title: "КОНТЕНТ ПРОДАКШН",
+                prod_desc: "Контент стал валютой 21 века. Посты, Рилс, Сторис, YouTube, TikTok — это не просто развлечение, а мощный инструмент влияния. Чтобы выделиться в этом шуме, нужно качество. Мы создаем визуал, который цепляет с первой секунды. Снимаем, монтируем, обрабатываем — делаем всё, чтобы вы сияли.",
+                
+                gallery_title: "ФОТО ПОРТФОЛИО",
+                video_title: "НАШИ ВИДЕОРАБОТЫ",
+                
+                info_title: "Важная Информация",
+                info_text: "Съёмки и монтаж бывают абсолютно разной сложности. Целый день свадебной съёмки требует совершенно других физических и технических затрат, чем час съёмки Рилс. Монтаж динамичного клипа занимает иное время, чем подкаст. Поэтому у нас нет фиксированных «ценников». Мы рассчитываем стоимость индивидуально после консультации, когда поймем ваши цели и масштаб задачи.",
+                
+                form_title: "РАССЧИТАТЬ СТОИМОСТЬ",
+                form_subtitle: "Заполните форму, выберите категорию, и мы свяжемся с вами.",
+                
+                name_ph: "Ваше имя",
+                phone_ph: "Ваш номер телефона",
+                messenger_label: "Где удобнее ответить?",
+                
+                select_cat: "Выберите категорию...",
+                cat_photo: "Фотосъёмка",
+                cat_video: "Видеосъёмка",
+                cat_edit: "Монтаж Видео",
+                
+                select_type: "Сначала выберите категорию...",
+                
+                btn_submit_quote: "Узнать стоимость",
+                footer_legal_link: "Политика Конфиденциальности и Реквизиты"
+            },
+            en: {
+                menu_main: "Home",
+                menu_services: "Services",
+                menu_contacts: "Contact & Payments",
+                
+                prod_title: "CONTENT PRODUCTION",
+                prod_desc: "Content has become the currency of the 21st century. Posts, Reels, Stories, YouTube, TikTok — these are not just entertainment, but powerful tools for influence. To stand out in this noise, you need quality. We create visuals that grab attention from the first second. We shoot, edit, and refine — doing everything to make you shine.",
+                
+                gallery_title: "PHOTO PORTFOLIO",
+                video_title: "OUR VIDEO WORKS",
+                
+                info_title: "Important Information",
+                info_text: "Shooting and editing vary greatly in complexity. A full-day wedding shoot requires completely different physical and technical resources than an hour of Reels filming. Editing a dynamic clip takes different time than a podcast. That's why we don't have fixed 'price tags'. We calculate the cost individually after a consultation, once we understand your goals and the scale of the project.",
+                
+                form_title: "CALCULATE COST",
+                form_subtitle: "Fill out the form, select a category, and we will contact you.",
+                
+                name_ph: "Your Name",
+                phone_ph: "Your Phone Number",
+                messenger_label: "Preferred contact method?",
+                
+                select_cat: "Select Category...",
+                cat_photo: "Photography",
+                cat_video: "Videography",
+                cat_edit: "Video Editing",
+                
+                select_type: "First select a category...",
+                
+                btn_submit_quote: "Get a Quote",
+                footer_legal_link: "Privacy Policy & Legal Info"
+            }
+        };
+
+        function setLanguage(lang) {
+            localStorage.setItem('language', lang);
+
+            if(document.getElementById('lang-ru')) {
+                document.getElementById('lang-ru').classList.remove('active');
+                document.getElementById('lang-en').classList.remove('active');
+                document.getElementById('lang-' + lang).classList.add('active');
+            }
+            const elements = document.querySelectorAll('[data-i18n]');
+            elements.forEach(el => {
+                const key = el.getAttribute('data-i18n');
+                if (translations[lang][key]) {
+                    el.innerHTML = translations[lang][key];
+                }
+            });
+            const inputs = document.querySelectorAll('[data-placeholder]');
+            inputs.forEach(el => {
+                const key = el.getAttribute('data-placeholder');
+                if (translations[lang][key]) {
+                    el.setAttribute('placeholder', translations[lang][key]);
+                }
+            });
+            updateSubServices();
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const savedLang = localStorage.getItem('language') || 'en';
+            setLanguage(savedLang);
+        });
+    </script>
+</body>
+</html>

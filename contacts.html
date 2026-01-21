@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contacts & Payments | HYPE FRAME LTD</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;800&display=swap" rel="stylesheet">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .info-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 40px; margin-bottom: 80px; }
+        .info-card { background: #111; padding: 40px; border-radius: var(--radius-lg); border: 1px solid #222; position: relative; overflow: hidden; }
+        .info-card h3 { font-size: 1.5rem; color: var(--primary); margin-bottom: 20px; text-transform: uppercase; font-weight: 800; }
+        .info-card p { color: #ccc; margin-bottom: 20px; font-size: 1rem; }
+        .info-card ul { list-style: none; padding: 0; margin-bottom: 20px; }
+        .info-card li { margin-bottom: 10px; color: #aaa; display: flex; align-items: center; gap: 10px; }
+        .info-card li::before { content: "•"; color: var(--primary); font-size: 1.5rem; line-height: 0; }
+        
+        .apple-pay-badge {
+            display: inline-block; background: #000; color: #fff; border: 1px solid #333;
+            padding: 8px 16px; border-radius: 8px; font-weight: 600; font-size: 0.9rem;
+            margin-right: 10px; margin-bottom: 10px;
+        }
+        .payment-methods { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 20px; }
+        
+        @media (max-width: 768px) {
+            .info-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="background-blobs">
+        <div class="blob blob-1"></div>
+        <div class="blob blob-2"></div>
+        <div class="blob blob-3"></div>
+    </div>
+
+    <div id="mobile-overlay" class="mobile-overlay">
+        <button id="close-menu" class="close-btn" onclick="toggleMobileMenu()">&times;</button>
+        <nav class="mobile-nav">
+            <a href="index.html" data-i18n="menu_main">Home</a>
+            <a href="index.html#services" data-i18n="menu_services">Services</a>
+            <a href="contacts.html" onclick="toggleMobileMenu()" data-i18n="menu_contacts">Contact & Payments</a>
+        </nav>
+        <div class="mobile-lang">
+            <span onclick="setLanguage('ru'); toggleMobileMenu()">RU</span>
+            <span class="lang-divider">|</span>
+            <span onclick="setLanguage('en'); toggleMobileMenu()">EN</span>
+        </div>
+    </div>
+
+    <header id="header" data-aos="fade-down">
+        <div class="header-glass">
+            <a href="index.html" class="logo">
+                <img src="images/logo.png" alt="HYPE FRAME">
+            </a>
+            
+            <nav class="main-menu">
+                <a href="index.html" data-i18n="menu_main">Home</a>
+                <a href="index.html#services" data-i18n="menu_services">Services</a>
+                <a href="contacts.html" data-i18n="menu_contacts">Contact & Payments</a>
+            </nav>
+
+            <div class="lang-switch desktop-only">
+                <span id="lang-ru" onclick="setLanguage('ru')">RU</span>
+                <span class="separator">/</span>
+                <span id="lang-en" class="active" onclick="setLanguage('en')">EN</span>
+            </div>
+        </div>
+
+        <button id="burger-btn" class="burger-glass" onclick="toggleMobileMenu()">
+            <div class="burger-line"></div>
+            <div class="burger-line"></div>
+        </button>
+    </header>
+
+    <section class="section about-section">
+        <div class="container">
+            
+            <div class="section-header" data-aos="fade-up">
+                <h2 data-i18n="contacts_page_title">CONTACTS & PAYMENTS</h2>
+            </div>
+
+            <div class="info-grid">
+                
+                <div class="info-card" data-aos="fade-up" data-aos-delay="100">
+                    <h3 data-i18n="deposit_title">Booking Policy</h3>
+                    <p data-i18n="deposit_text">
+                        We create complex productions that involve booking premium studios, hiring artists, and securing equipment. To guarantee high standards and protect against last-minute cancellations, we operate on a prepayment basis.
+                    </p>
+                    <p data-i18n="deposit_subtext">
+                        The deposit secures your dates and production resources. It confirms your serious intent and allows us to start pre-production immediately.
+                    </p>
+                    <a href="#" class="btn btn-primary" style="margin-top: 20px; text-decoration: none; text-align: center; display: inline-block;" data-i18n="btn_deposit">Pay Deposit</a>
+                </div>
+
+                <div class="info-card" data-aos="fade-up" data-aos-delay="200">
+                    <h3 data-i18n="global_title">Global Reach</h3>
+                    <p data-i18n="global_text">
+                        HYPE FRAME is a UK-registered company with teams in <b>London, Dubai, and Moscow</b>. For Personal Movies, we can organize multi-city shoots to give your film a truly international scale.
+                    </p>
+                    
+                    <h3 data-i18n="payment_methods_header" style="font-size: 1.2rem; margin-top: 30px;">Payment Methods</h3>
+                    
+                    <div class="payment-methods">
+                        <span class="apple-pay-badge"> Pay</span>
+                        <span class="apple-pay-badge">Card Terminal</span>
+                        <span class="apple-pay-badge">Bank Transfer</span>
+                        <span class="apple-pay-badge">Payment Link</span>
+                    </div>
+
+                    <p style="margin-top: 15px; font-size: 0.9rem; color: #888;" data-i18n="payment_note">
+                        We accept payments worldwide via Invoice or Revolut Business links.
+                    </p>
+                </div>
+
+                <div class="info-card" data-aos="fade-up" data-aos-delay="300" style="grid-column: 1 / -1;">
+                    <h3 data-i18n="contract_title">Service Agreement</h3>
+                    <div style="display: flex; gap: 40px; align-items: center; flex-wrap: wrap;">
+                        <div style="flex: 1;">
+                            <p data-i18n="contract_text">
+                                Transparency is our priority. We sign an individual contract with every client. This document details:
+                            </p>
+                            <ul>
+                                <li data-i18n="contract_li_1">Production timeline and deadlines</li>
+                                <li data-i18n="contract_li_2">Detailed budget and deposit terms</li>
+                                <li data-i18n="contract_li_3">Scope of services and additional options</li>
+                                <li data-i18n="contract_li_4">Rights and confidentiality</li>
+                            </ul>
+                            <p data-i18n="contract_note">
+                                All terms are discussed and approved during our initial consultation.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="form-wrapper" id="form-block" data-aos="flip-up">
+                <h2 data-i18n="form_title">GET IN TOUCH</h2>
+                <p data-i18n="form_subtitle">
+                    We answer questions and conduct consultations from <b>09:00 to 19:00</b> (London time).<br>Please fill out the form below.
+                </p>
+                
+                <form action="https://formspree.io/f/xpqqjgvp" method="POST" class="contact-form">
+                    
+                    <div class="input-group">
+                        <input type="text" name="name" data-placeholder="name_ph" placeholder="Your Name" required>
+                    </div>
+
+                    <div class="radio-group-label" data-i18n="messenger_label">Preferred contact method?</div>
+                    <div class="radio-group">
+                        <input type="radio" id="contact-wa" name="messenger" value="WhatsApp" checked onchange="toggleContactMethod()">
+                        <label for="contact-wa">WhatsApp</label>
+                        <input type="radio" id="contact-tg" name="messenger" value="Telegram" onchange="toggleContactMethod()">
+                        <label for="contact-tg">Telegram</label>
+                    </div>
+
+                    <div class="input-group" id="input-phone-group">
+                        <input type="tel" name="phone" id="input-phone" data-placeholder="phone_ph" placeholder="Your Phone Number" required>
+                    </div>
+                    
+                    <div class="input-group" id="input-tg-group" style="display: none;">
+                        <input type="text" name="telegram_username" id="input-tg" placeholder="@username (Telegram)">
+                    </div>
+
+                    <div class="input-group">
+                        <div class="select-wrapper">
+                            <select name="service_type" required>
+                                <option value="" disabled selected data-i18n="select_default">Which service are you interested in?</option>
+                                <option value="Content_Production" data-i18n="select_1">High-End Production</option>
+                                <option value="Personal_Movie" data-i18n="select_2">Personal Movie</option>
+                                <option value="Digital_Concierge" data-i18n="select_3">Digital Concierge</option>
+                                <option value="Other" data-i18n="select_4">Other / General Consultation</option>
+                            </select>
+                            <span class="select-arrow">▼</span>
+                        </div>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary" data-i18n="btn_send">Send Request</button>
+                </form>
+            </div>
+
+        </div>
+    </section>
+
+    <footer id="footer-glass">
+        <div class="container footer-content">
+            <div class="logo-footer">
+                <img src="images/logo.png" alt="Logo">
+            </div>
+            
+            <div class="footer-links">
+                <a href="legal.html" class="footer-legal-link" data-i18n="footer_legal_link">Privacy Policy & Legal Info</a>
+            </div>
+
+            <p class="copyright">
+                © All rights reserved. HYPE FRAME LTD<br>
+                Registered in England & Wales No. 16555812<br>
+                20 Wenlock Road, London, N1 7GU<br>
+                2025-2026
+            </p>
+        </div>
+    </footer>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init({ duration: 1000, once: true });
+
+        function toggleContactMethod() {
+            const isWa = document.getElementById('contact-wa').checked;
+            const phoneGroup = document.getElementById('input-phone-group');
+            const tgGroup = document.getElementById('input-tg-group');
+            const phoneInput = document.getElementById('input-phone');
+            const tgInput = document.getElementById('input-tg');
+
+            if (isWa) {
+                phoneGroup.style.display = 'block';
+                tgGroup.style.display = 'none';
+                phoneInput.setAttribute('required', 'required');
+                tgInput.removeAttribute('required');
+                tgInput.value = '';
+            } else {
+                phoneGroup.style.display = 'none';
+                tgGroup.style.display = 'block';
+                tgInput.setAttribute('required', 'required');
+                phoneInput.removeAttribute('required');
+                phoneInput.value = '';
+            }
+        }
+
+        function toggleMobileMenu() {
+            const overlay = document.getElementById('mobile-overlay');
+            overlay.classList.toggle('active');
+        }
+
+        const translations = {
+            ru: {
+                menu_main: "Главная",
+                menu_services: "Услуги",
+                menu_contacts: "Контакты и Оплата",
+                
+                contacts_page_title: "КОНТАКТЫ И ОПЛАТА",
+                
+                // Депозит
+                deposit_title: "Политика Бронирования",
+                deposit_text: "Мы создаем сложные проекты, требующие бронирования премиальных студий, найма артистов и аренды оборудования. Чтобы гарантировать высокие стандарты и защитить процесс от отмен, мы работаем по предоплате.",
+                deposit_subtext: "Депозит закрепляет за вами даты и ресурсы продакшна. Это подтверждает ваши серьезные намерения и позволяет нам немедленно приступить к подготовке.",
+                btn_deposit: "Внести Предоплату",
+
+                // География
+                global_title: "Международный Охват",
+                global_text: "HYPE FRAME — британская компания с командами в <b>Лондоне, Дубае и Москве</b>. Для услуги «Фильм для Вас» мы можем организовать съемки сразу в нескольких городах, чтобы придать фильму международный масштаб.",
+                payment_methods_header: "Способы Оплаты",
+                payment_note: "Мы принимаем платежи по всему миру через Инвойс или ссылки Revolut Business.",
+
+                // Договор
+                contract_title: "Договор Оказания Услуг",
+                contract_text: "Прозрачность — наш приоритет. Мы заключаем индивидуальный договор с каждым клиентом. В документе прописаны:",
+                contract_li_1: "Сроки производства и дедлайны",
+                contract_li_2: "Детальная смета и условия депозита",
+                contract_li_3: "Перечень услуг и дополнительных опций",
+                contract_li_4: "Права и конфиденциальность",
+                contract_note: "Все условия обсуждаются и утверждаются на первичной консультации.",
+
+                // Форма
+                form_title: "СВЯЖИТЕСЬ С НАМИ",
+                form_subtitle: "Мы отвечаем на вопросы и проводим консультации с <b>09:00 до 19:00</b> (по Лондону).<br>Пожалуйста, заполните форму ниже.",
+                
+                btn_send: "Отправить заявку",
+                name_ph: "Ваше имя",
+                phone_ph: "Ваш номер телефона",
+                select_default: "Какая услуга вас интересует?",
+                select_1: "Имиджевый Продакшн",
+                select_2: "Персональное Кино",
+                select_3: "Digital-Консьерж",
+                select_4: "Другое / Общая консультация",
+                messenger_label: "Где удобнее ответить?",
+                
+                footer_legal_link: "Политика Конфиденциальности и Реквизиты"
+            },
+            en: {
+                menu_main: "Home",
+                menu_services: "Services",
+                menu_contacts: "Contact & Payments",
+                
+                contacts_page_title: "CONTACTS & PAYMENTS",
+                
+                // Deposit
+                deposit_title: "Booking Policy",
+                deposit_text: "We create complex productions that involve booking premium studios, hiring artists, and securing equipment. To guarantee high standards and protect against last-minute cancellations, we operate on a prepayment basis.",
+                deposit_subtext: "The deposit secures your dates and production resources. It confirms your serious intent and allows us to start pre-production immediately.",
+                btn_deposit: "Pay Deposit",
+
+                // Global
+                global_title: "Global Reach",
+                global_text: "HYPE FRAME is a UK-registered company with teams in <b>London, Dubai, and Moscow</b>. For Personal Movies, we can organize multi-city shoots to give your film a truly international scale.",
+                payment_methods_header: "Payment Methods",
+                payment_note: "We accept payments worldwide via Invoice or Revolut Business links.",
+
+                // Contract
+                contract_title: "Service Agreement",
+                contract_text: "Transparency is our priority. We sign an individual contract with every client. This document details:",
+                contract_li_1: "Production timeline and deadlines",
+                contract_li_2: "Detailed budget and deposit terms",
+                contract_li_3: "Scope of services and additional options",
+                contract_li_4: "Rights and confidentiality",
+                contract_note: "All terms are discussed and approved during our initial consultation.",
+
+                // Form
+                form_title: "GET IN TOUCH",
+                form_subtitle: "We answer questions and conduct consultations from <b>09:00 to 19:00</b> (London time).<br>Please fill out the form below.",
+                
+                btn_send: "Send Request",
+                name_ph: "Your Name",
+                phone_ph: "Your Phone Number",
+                select_default: "Which service are you interested in?",
+                select_1: "High-End Production",
+                select_2: "Personal Movie",
+                select_3: "Digital Concierge",
+                select_4: "Other / General Consultation",
+                messenger_label: "Preferred contact method?",
+                
+                footer_legal_link: "Privacy Policy & Legal Info"
+            }
+        };
+
+        function setLanguage(lang) {
+            // 1. ЗАПОМИНАЕМ ВЫБОР
+            localStorage.setItem('language', lang);
+
+            // 2. МЕНЯЕМ АКТИВНУЮ КНОПКУ
+            if(document.getElementById('lang-ru')) {
+                document.getElementById('lang-ru').classList.remove('active');
+                document.getElementById('lang-en').classList.remove('active');
+                document.getElementById('lang-' + lang).classList.add('active');
+            }
+
+            // 3. МЕНЯЕМ ТЕКСТЫ
+            const elements = document.querySelectorAll('[data-i18n]');
+            elements.forEach(el => {
+                const key = el.getAttribute('data-i18n');
+                if (translations[lang] && translations[lang][key]) {
+                    el.innerHTML = translations[lang][key];
+                }
+            });
+
+            // 4. МЕНЯЕМ ПОДСКАЗКИ (PLACEHOLDERS)
+            const inputs = document.querySelectorAll('[data-placeholder]');
+            inputs.forEach(el => {
+                const key = el.getAttribute('data-placeholder');
+                if (translations[lang] && translations[lang][key]) {
+                    el.setAttribute('placeholder', translations[lang][key]);
+                }
+            });
+        }
+
+        // 5. ПРОВЕРЯЕМ ПАМЯТЬ ПРИ ЗАГРУЗКЕ
+        document.addEventListener('DOMContentLoaded', () => {
+            const savedLang = localStorage.getItem('language') || 'en';
+            setLanguage(savedLang);
+        });
+    </script>
+</body>
+</html>

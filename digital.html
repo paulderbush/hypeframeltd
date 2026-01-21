@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Digital Concierge | HYPE FRAME LTD</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;800&display=swap" rel="stylesheet">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="background-blobs">
+        <div class="blob blob-1"></div>
+        <div class="blob blob-2"></div>
+        <div class="blob blob-3"></div>
+    </div>
+
+    <div id="mobile-overlay" class="mobile-overlay">
+        <button id="close-menu" class="close-btn" onclick="toggleMobileMenu()">&times;</button>
+        <nav class="mobile-nav">
+            <a href="index.html" data-i18n="menu_main">Home</a>
+            <a href="index.html#services" data-i18n="menu_services">Services</a>
+            <a href="contacts.html" data-i18n="menu_contacts">Contact & Payments</a>
+        </nav>
+        <div class="mobile-lang">
+            <span onclick="setLanguage('ru'); toggleMobileMenu()">RU</span>
+            <span class="lang-divider">|</span>
+            <span onclick="setLanguage('en'); toggleMobileMenu()">EN</span>
+        </div>
+    </div>
+
+    <header id="header" data-aos="fade-down">
+        <div class="header-glass">
+            <a href="index.html" class="logo">
+                <img src="images/logo.png" alt="HYPE FRAME">
+            </a>
+            
+            <nav class="main-menu">
+                <a href="index.html" data-i18n="menu_main">Home</a>
+                <a href="index.html#services" data-i18n="menu_services">Services</a>
+                <a href="contacts.html" data-i18n="menu_contacts">Contact & Payments</a>
+            </nav>
+
+            <div class="lang-switch desktop-only">
+                <span id="lang-ru" onclick="setLanguage('ru')">RU</span>
+                <span class="separator">/</span>
+                <span id="lang-en" class="active" onclick="setLanguage('en')">EN</span>
+            </div>
+        </div>
+
+        <button id="burger-btn" class="burger-glass" onclick="toggleMobileMenu()">
+            <div class="burger-line"></div>
+            <div class="burger-line"></div>
+        </button>
+    </header>
+
+    <section class="section movie-hero-section" style="padding-bottom: 0;">
+        <div class="container" style="text-align: center; max-width: 900px;" data-aos="fade-up">
+            <h2 data-i18n="hero_title" style="margin-bottom: 20px;">DIGITAL CONCIERGE</h2>
+        </div>
+
+        <div class="full-width-image" data-aos="zoom-in" data-aos-delay="200" style="margin-top: 30px; margin-bottom: 50px;">
+            <img src="images/digital_hero.jpg" alt="Digital Lifestyle">
+            <div class="orange-overlay"></div>
+        </div>
+
+        <div class="container" style="text-align: center; max-width: 900px;" data-aos="fade-up" data-aos-delay="400">
+            <p class="lead-text" data-i18n="hero_desc">
+                Technology evolves at breakneck speed. 15 years ago, we just saw the first iPhone; today, our whole life is digital. AI, VR, social media, online business... It's hard to keep up. We are your personal guide in this chaotic digital world.
+            </p>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="container">
+            <div class="section-header" data-aos="fade-up">
+                <h2 data-i18n="services_title">OUR SOLUTIONS</h2>
+                <p data-i18n="services_subtitle">From setting up your new iPhone to mastering AI.</p>
+            </div>
+
+            <div class="services-grid">
+                
+                <div class="service-card" data-aos="fade-up" data-aos-delay="100">
+                    <div class="card-image-box">
+                        <img src="images/dig_ios.jpg" alt="iOS Setup">
+                    </div>
+                    <div class="card-content">
+                        <h3 data-i18n="serv1_title">iOS Ecosystem & Migration</h3>
+                        <p data-i18n="serv1_desc">Seamless data transfer to your new iPhone/iPad. Setting up iCloud, mastering new features, and organizing your digital space.</p>
+                    </div>
+                    <div class="orange-backdrop-card"></div>
+                </div>
+
+                <div class="service-card" data-aos="fade-up" data-aos-delay="200">
+                    <div class="card-image-box">
+                        <img src="images/dig_apps.jpg" alt="App Recovery">
+                    </div>
+                    <div class="card-content">
+                        <h3 data-i18n="serv2_title">App Restoration</h3>
+                        <p data-i18n="serv2_desc">Developers remove apps from the AppStore, but we bring them back. Banking apps, old games, and essential tools restored on your device.</p>
+                    </div>
+                    <div class="orange-backdrop-card"></div>
+                </div>
+
+                <div class="service-card" data-aos="fade-up" data-aos-delay="300">
+                    <div class="card-image-box">
+                        <img src="images/dig_ai.jpg" alt="AI & ChatGPT">
+                    </div>
+                    <div class="card-content">
+                        <h3 data-i18n="serv3_title">Artificial Intelligence</h3>
+                        <p data-i18n="serv3_desc">Step into the future. Registration and setup of ChatGPT, Apple Intelligence configuration, and personal coaching on how to use AI.</p>
+                    </div>
+                    <div class="orange-backdrop-card"></div>
+                </div>
+
+                <div class="service-card" data-aos="fade-up" data-aos-delay="400">
+                    <div class="card-image-box">
+                        <img src="images/dig_mac.jpg" alt="MacOS Setup">
+                    </div>
+                    <div class="card-content">
+                        <h3 data-i18n="serv4_title">MacOS Expert</h3>
+                        <p data-i18n="serv4_desc">Moving to a new Mac? We handle data migration, system tuning, synchronization, and teach you the hidden tricks of MacOS.</p>
+                    </div>
+                    <div class="orange-backdrop-card"></div>
+                </div>
+
+                <div class="service-card" data-aos="fade-up" data-aos-delay="500">
+                    <div class="card-image-box">
+                        <img src="images/dig_soft.jpg" alt="Software Installation">
+                    </div>
+                    <div class="card-content">
+                        <h3 data-i18n="serv5_title">Pro Software & Gaming</h3>
+                        <p data-i18n="serv5_desc">Installation of Microsoft Office, Final Cut Pro, Logic Pro, Photoshop. Setup of modern AAA games on your Mac.</p>
+                    </div>
+                    <div class="orange-backdrop-card"></div>
+                </div>
+
+                <div class="service-card" data-aos="fade-up" data-aos-delay="600">
+                    <div class="card-image-box">
+                        <img src="images/dig_music.jpg" alt="Music Services">
+                    </div>
+                    <div class="card-content">
+                        <h3 data-i18n="serv6_title">Global Music Access</h3>
+                        <p data-i18n="serv6_desc">Spotify account creation, Apple ID region change, and premium subscription setup. Listen to music without borders.</p>
+                    </div>
+                    <div class="orange-backdrop-card"></div>
+                </div>
+
+                <div class="service-card" data-aos="fade-up" data-aos-delay="700">
+                    <div class="card-image-box">
+                        <img src="images/dig_docs.jpg" alt="Documents">
+                    </div>
+                    <div class="card-content">
+                        <h3 data-i18n="serv7_title">Document Services</h3>
+                        <p data-i18n="serv7_desc">Creating, editing, and fixing documents. Translation of certificates, statements, and other paperwork.</p>
+                    </div>
+                    <div class="orange-backdrop-card"></div>
+                </div>
+
+                <div class="service-card" data-aos="fade-up" data-aos-delay="800">
+                    <div class="card-image-box">
+                        <img src="images/dig_web.jpg" alt="Web Design">
+                    </div>
+                    <div class="card-content">
+                        <h3 data-i18n="serv8_title">Web Design & Domains</h3>
+                        <p data-i18n="serv8_desc">Domain purchase, creation of Landing Pages and websites. We teach you how to manage your own platform.</p>
+                    </div>
+                    <div class="orange-backdrop-card"></div>
+                </div>
+
+                <div class="service-card" data-aos="fade-up" data-aos-delay="900">
+                    <div class="card-image-box">
+                        <img src="images/dig_video.jpg" alt="Video Editing">
+                    </div>
+                    <div class="card-content">
+                        <h3 data-i18n="serv9_title">Video Editing</h3>
+                        <p data-i18n="serv9_desc">Professional editing for Reels, Shorts, TikTok, or horizontal formats. From dynamic social content to wedding films.</p>
+                    </div>
+                    <div class="orange-backdrop-card"></div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <section id="request-form" class="section contact-section">
+        <div class="container">
+            <div class="form-wrapper" data-aos="flip-up">
+                <h2 data-i18n="form_title">DIGITAL HELP IS HERE</h2>
+                <p data-i18n="form_subtitle">Select the services you need, and we will calculate the cost.</p>
+                
+                <form action="https://formspree.io/f/xpqqjgvp" method="POST" class="contact-form">
+                    
+                    <div class="input-group">
+                        <input type="text" name="name" data-placeholder="name_ph" placeholder="Your Name" required>
+                        <input type="hidden" name="source_page" value="Digital Concierge Page">
+                    </div>
+
+                    <div class="radio-group-label" data-i18n="messenger_label">Preferred contact method?</div>
+                    <div class="radio-group">
+                        <input type="radio" id="contact-wa-dig" name="messenger_dig" value="WhatsApp" checked onchange="toggleContactMethodDig()">
+                        <label for="contact-wa-dig">WhatsApp</label>
+                        <input type="radio" id="contact-tg-dig" name="messenger_dig" value="Telegram" onchange="toggleContactMethodDig()">
+                        <label for="contact-tg-dig">Telegram</label>
+                    </div>
+
+                    <div class="input-group" id="input-phone-group-dig">
+                        <input type="tel" name="phone" id="input-phone-dig" data-placeholder="phone_ph" placeholder="Your Phone Number" required>
+                    </div>
+                    
+                    <div class="input-group" id="input-tg-group-dig" style="display: none;">
+                        <input type="text" name="telegram_username" id="input-tg-dig" placeholder="@username (Telegram)">
+                    </div>
+
+                    <div class="input-group">
+                        <div class="select-wrapper">
+                            <select name="digital_service" required>
+                                <option value="" disabled selected data-i18n="select_default">Choose a service...</option>
+                                <option value="iOS_Transfer" data-i18n="opt_1">iOS Setup & Transfer</option>
+                                <option value="App_Restore" data-i18n="opt_2">App Restoration</option>
+                                <option value="AI_Setup" data-i18n="opt_3">AI & ChatGPT Setup</option>
+                                <option value="MacOS_Setup" data-i18n="opt_4">MacOS Setup</option>
+                                <option value="Soft_Install" data-i18n="opt_5">Pro Software Install</option>
+                                <option value="Music_Account" data-i18n="opt_6">Spotify / Apple Music</option>
+                                <option value="Docs_Trans" data-i18n="opt_7">Documents & Translation</option>
+                                <option value="Web_Design" data-i18n="opt_8">Websites & Landing Pages</option>
+                                <option value="Video_Edit" data-i18n="opt_9">Video Editing</option>
+                                <option value="Complex" data-i18n="opt_10">Complex Request</option>
+                            </select>
+                            <span class="select-arrow">▼</span>
+                        </div>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary" data-i18n="btn_submit_quote">Get a Quote</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <footer id="footer-glass">
+        <div class="container footer-content">
+            <div class="logo-footer">
+                <img src="images/logo.png" alt="Logo">
+            </div>
+            
+            <div class="footer-links">
+                <a href="legal.html" class="footer-legal-link" data-i18n="footer_legal_link">Privacy Policy & Legal Info</a>
+            </div>
+
+            <p class="copyright">
+                © All rights reserved. HYPE FRAME LTD<br>
+                Registered in England & Wales No. 16555812<br>
+                20 Wenlock Road, London, N1 7GU<br>
+                2025-2026
+            </p>
+        </div>
+    </footer>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init({ duration: 1000, once: true });
+
+        function toggleContactMethodDig() {
+            const isWa = document.getElementById('contact-wa-dig').checked;
+            const phoneGroup = document.getElementById('input-phone-group-dig');
+            const tgGroup = document.getElementById('input-tg-group-dig');
+            const phoneInput = document.getElementById('input-phone-dig');
+            const tgInput = document.getElementById('input-tg-dig');
+
+            if (isWa) {
+                phoneGroup.style.display = 'block';
+                tgGroup.style.display = 'none';
+                phoneInput.setAttribute('required', 'required');
+                tgInput.removeAttribute('required');
+                tgInput.value = '';
+            } else {
+                phoneGroup.style.display = 'none';
+                tgGroup.style.display = 'block';
+                tgInput.setAttribute('required', 'required');
+                phoneInput.removeAttribute('required');
+                phoneInput.value = '';
+            }
+        }
+
+        function toggleMobileMenu() {
+            const overlay = document.getElementById('mobile-overlay');
+            overlay.classList.toggle('active');
+        }
+
+        const translations = {
+            ru: {
+                menu_main: "Главная",
+                menu_services: "Услуги",
+                menu_contacts: "Контакты и Оплата",
+                
+                hero_title: "DIGITAL-КОНСЬЕРЖ",
+                hero_desc: "Технологии меняются молниеносно. 15 лет назад мы увидели первый iPhone, а сегодня вся наша жизнь — в телефоне. Искусственный интеллект, VR, социальные сети, онлайн-бизнес... Успеть за всем этим сложно. Мы — ваш личный проводник в цифровом хаосе.",
+                
+                services_title: "НАШИ РЕШЕНИЯ",
+                services_subtitle: "От настройки нового iPhone до внедрения Искусственного Интеллекта.",
+                
+                // Услуги
+                serv1_title: "Экосистема iOS и Перенос",
+                serv1_desc: "Бесшовный перенос данных со старого устройства на новый iPhone/iPad. Настройка iCloud, обучение новым фишкам и организация цифрового пространства.",
+                
+                serv2_title: "Восстановление Приложений",
+                serv2_desc: "Разработчики удаляют софт из AppStore, а мы возвращаем. Сбербанк, Тинькофф, старые игры и нужные утилиты снова на вашем экране.",
+                
+                serv3_title: "Искусственный Интеллект",
+                serv3_desc: "Шаг в будущее. Регистрация и установка ChatGPT, настройка Apple Intelligence, личное обучение работе с нейросетями для жизни и работы.",
+                
+                serv4_title: "Настройка MacOS",
+                serv4_desc: "Переезд на новый Mac? Сделаем перенос данных, настроим систему, синхронизацию и научим неочевидным приемам работы.",
+                
+                serv5_title: "Программы и Игры",
+                serv5_desc: "Установка Microsoft Office, Final Cut Pro, Logic Pro, Photoshop. Настройка современных AAA-игр на вашем Mac.",
+                
+                serv6_title: "Музыка без границ",
+                serv6_desc: "Создание аккаунта Spotify, смена региона Apple ID, оформление премиум-подписок. Слушайте музыку со всего мира без ограничений.",
+                
+                serv7_title: "Документы и Перевод",
+                serv7_desc: "Создание, правка и форматирование документов. Перевод справок, выписок и договоров.",
+                
+                serv8_title: "Сайты и Landing Page",
+                serv8_desc: "Покупка домена, создание сайтов и посадочных страниц. Обучение работе с платформой для самостоятельного ведения.",
+                
+                serv9_title: "Монтаж Видео",
+                serv9_desc: "Профессиональный монтаж Reels, Shorts, TikTok или горизонтальных видео. От динамичных роликов для соцсетей до свадебных фильмов.",
+
+                // Форма
+                form_title: "НУЖНА ПОМОЩЬ?",
+                form_subtitle: "Выберите интересующие услуги, и мы рассчитаем стоимость.",
+                name_ph: "Ваше имя",
+                phone_ph: "Ваш номер телефона",
+                messenger_label: "Где удобнее ответить?",
+                
+                select_default: "Выберите услугу...",
+                opt_1: "Настройка iOS / Перенос данных",
+                opt_2: "Восстановление приложений",
+                opt_3: "ИИ и ChatGPT",
+                opt_4: "Настройка MacOS",
+                opt_5: "Установка программ (Office/Pro)",
+                opt_6: "Spotify / Apple Music",
+                opt_7: "Документы и Переводы",
+                opt_8: "Сайты и Лендинги",
+                opt_9: "Монтаж видео",
+                opt_10: "Комплексный запрос",
+                
+                btn_submit_quote: "Узнать стоимость",
+                footer_legal_link: "Политика Конфиденциальности и Реквизиты"
+            },
+            en: {
+                menu_main: "Home",
+                menu_services: "Services",
+                menu_contacts: "Contact & Payments",
+                
+                hero_title: "DIGITAL CONCIERGE",
+                hero_desc: "Technology evolves at breakneck speed. 15 years ago, we just saw the first iPhone; today, our whole life is digital. AI, VR, social media, online business... It's hard to keep up. We are your personal guide in this chaotic digital world.",
+                
+                services_title: "OUR SOLUTIONS",
+                services_subtitle: "From setting up your new iPhone to mastering AI.",
+                
+                // Services
+                serv1_title: "iOS Ecosystem & Migration",
+                serv1_desc: "Seamless data transfer to your new iPhone/iPad. Setting up iCloud, mastering new features, and organizing your digital space.",
+                
+                serv2_title: "App Restoration",
+                serv2_desc: "Developers remove apps from the AppStore, but we bring them back. Banking apps, old games, and essential tools restored on your device.",
+                
+                serv3_title: "Artificial Intelligence",
+                serv3_desc: "Step into the future. Registration and setup of ChatGPT, Apple Intelligence configuration, and personal coaching on how to use AI.",
+                
+                serv4_title: "MacOS Expert",
+                serv4_desc: "Moving to a new Mac? We handle data migration, system tuning, synchronization, and teach you the hidden tricks of MacOS.",
+                
+                serv5_title: "Pro Software & Gaming",
+                serv5_desc: "Installation of Microsoft Office, Final Cut Pro, Logic Pro, Photoshop. Setup of modern AAA games on your Mac.",
+                
+                serv6_title: "Global Music Access",
+                serv6_desc: "Spotify account creation, Apple ID region change, and premium subscription setup. Listen to music without borders.",
+                
+                serv7_title: "Document Services",
+                serv7_desc: "Creating, editing, and fixing documents. Translation of certificates, statements, and other paperwork.",
+                
+                serv8_title: "Web Design & Domains",
+                serv8_desc: "Domain purchase, creation of Landing Pages and websites. We teach you how to manage your own platform.",
+                
+                serv9_title: "Video Editing",
+                serv9_desc: "Professional editing for Reels, Shorts, TikTok, or horizontal formats. From dynamic social content to wedding films.",
+
+                // Form
+                form_title: "DIGITAL HELP IS HERE",
+                form_subtitle: "Select the services you need, and we will calculate the cost.",
+                name_ph: "Your Name",
+                phone_ph: "Your Phone Number",
+                messenger_label: "Preferred contact method?",
+                
+                select_default: "Choose a service...",
+                opt_1: "iOS Setup & Transfer",
+                opt_2: "App Restoration",
+                opt_3: "AI & ChatGPT Setup",
+                opt_4: "MacOS Setup",
+                opt_5: "Pro Software Install",
+                opt_6: "Spotify / Apple Music",
+                opt_7: "Documents & Translation",
+                opt_8: "Websites & Landing Pages",
+                opt_9: "Video Editing",
+                opt_10: "Complex Request",
+                
+                btn_submit_quote: "Get a Quote",
+                footer_legal_link: "Privacy Policy & Legal Info"
+            }
+        };
+
+        function setLanguage(lang) {
+            localStorage.setItem('language', lang);
+
+            if(document.getElementById('lang-ru')) {
+                document.getElementById('lang-ru').classList.remove('active');
+                document.getElementById('lang-en').classList.remove('active');
+                document.getElementById('lang-' + lang).classList.add('active');
+            }
+            const elements = document.querySelectorAll('[data-i18n]');
+            elements.forEach(el => {
+                const key = el.getAttribute('data-i18n');
+                if (translations[lang][key]) {
+                    el.innerHTML = translations[lang][key];
+                }
+            });
+            const inputs = document.querySelectorAll('[data-placeholder]');
+            inputs.forEach(el => {
+                const key = el.getAttribute('data-placeholder');
+                if (translations[lang][key]) {
+                    el.setAttribute('placeholder', translations[lang][key]);
+                }
+            });
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const savedLang = localStorage.getItem('language') || 'en';
+            setLanguage(savedLang);
+        });
+    </script>
+</body>
+</html>
